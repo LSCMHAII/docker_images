@@ -83,7 +83,7 @@ jobs:
 
       - name: Login to GitHub Container Registry
         if: env.PUSH_GHCR
-        run: exec buildah login -u ${{ github.actor }} -p ${{ github.token }} ghcr.io
+        run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Print tag
         run: |
